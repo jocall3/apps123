@@ -1,0 +1,54 @@
+```json
+{
+  "app": {
+    "name": "MetaGenius",
+    "version": "0.1.0",
+    "environment": "development",
+    "port": 3000
+  },
+  "paths": {
+    "projects": "./projects",
+    "templates": "./templates",
+    "archives": "./archives",
+    "logs": "./logs",
+    "cache": "./cache",
+    "schemas": "./schemas"
+  },
+  "generator": {
+    "aiProvider": "openai",
+    "aiModel": "gpt-4o",
+    "aiApiKeyEnvVar": "OPENAI_API_KEY",
+    "defaultLanguage": "typescript",
+    "defaultTechStack": [
+      "react",
+      "nodejs",
+      "express",
+      "mongodb"
+    ],
+    "codeStyleGuide": "airbnb",
+    "maxTokens": 4096,
+    "temperature": 0.7,
+    "promptEngineeringStrategy": "recursive_refinement"
+  },
+  "database": {
+    "type": "sqlite",
+    "connectionString": "sqlite://./data/metagenius.db"
+  },
+  "logging": {
+    "level": "info",
+    "consoleOutput": true,
+    "fileOutput": true,
+    "maxFileSizeMb": 10
+  },
+  "features": {
+    "versionControlIntegration": true,
+    "testingFrameworkGeneration": true,
+    "deploymentScriptGeneration": false,
+    "documentationGeneration": true
+  },
+  "security": {
+    "allowTelemetry": false,
+    "sensitiveDataHashingAlgorithm": "sha256"
+  }
+}
+```
