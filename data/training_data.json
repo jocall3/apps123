@@ -1,0 +1,54 @@
+```json
+[
+  {
+    "id": "1",
+    "prompt": "Create a simple React functional component named `WelcomeMessage` that takes a `name` prop and displays 'Hello, [name]!'.",
+    "completion": "import React from 'react';\n\nfunction WelcomeMessage({ name }) {\n  return (\n    <h1>Hello, {name}!</h1>\n  );\n}\n\nexport default WelcomeMessage;\n"
+  },
+  {
+    "id": "2",
+    "prompt": "Write a Python function `fibonacci(n)` that returns the n-th Fibonacci number. Include a docstring and handle edge cases for n=0 and n=1.",
+    "completion": "def fibonacci(n: int) -> int:\n    \"\"\"\n    Calculate the n-th Fibonacci number.\n\n    Args:\n        n: The index of the Fibonacci number to calculate (non-negative).\n\n    Returns:\n        The n-th Fibonacci number.\n\n    Raises:\n        ValueError: If n is a negative integer.\n    \"\"\"\n    if n < 0:\n        raise ValueError(\"Input must be a non-negative integer.\")\n    elif n == 0:\n        return 0\n    elif n == 1:\n        return 1\n    else:\n        a, b = 0, 1\n        for _ in range(2, n + 1):\n            a, b = b, a + b\n        return b\n"
+  },
+  {
+    "id": "3",
+    "prompt": "Generate a basic HTML5 page with a title 'My Portfolio', a header 'My Work', and a navigation bar with links 'Home', 'About', 'Contact'. Include simple CSS for the nav.",
+    "completion": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>My Portfolio</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            margin: 0;\n            padding: 0;\n            background-color: #f4f4f4;\n            color: #333;\n        }\n        header {\n            background-color: #333;\n            color: #fff;\n            padding: 1rem 0;\n            text-align: center;\n        }\n        nav ul {\n            list-style-type: none;\n            padding: 0;\n            text-align: center;\n        }\n        nav ul li {\n            display: inline;\n            margin: 0 15px;\n        }\n        nav ul li a {\n            color: #fff;\n            text-decoration: none;\n            font-weight: bold;\n        }\n        main {\n            padding: 20px;\n            text-align: center;\n        }\n        footer {\n            background-color: #333;\n            color: #fff;\n            text-align: center;\n            padding: 1rem 0;\n            position: fixed;\n            bottom: 0;\n            width: 100%;\n        }\n    </style>\n</head>\n<body>\n    <header>\n        <h1>My Work</h1>\n        <nav>\n            <ul>\n                <li><a href=\"#home\">Home</a></li>\n                <li><a href=\"#about\">About</a></li>\n                <li><a href=\"#contact\">Contact</a></li>\n            </ul>\n        </nav>\n    </header>\n\n    <main>\n        <p>Welcome to my portfolio! Here you can find examples of my projects and skills.</p>\n        <!-- Content will go here -->\n    </main>\n\n    <footer>\n        <p>&copy; 2023 My Portfolio</p>\n    </footer>\n</body>\n</html>\n"
+  },
+  {
+    "id": "4",
+    "prompt": "Create an Express.js route that handles a POST request to `/api/products` and returns the received JSON body with an added `id` field (e.g., `id: 'prod_123'`).",
+    "completion": "const express = require('express');\nconst router = express.Router();\n\n// Middleware to parse JSON request bodies\nrouter.use(express.json());\n\nrouter.post('/products', (req, res) => {\n  // In a real application, you'd generate a unique ID, e.g., using a UUID library or database sequence.\n  const newProduct = { id: `prod_${Date.now()}`, ...req.body };\n  \n  console.log('Received new product:', newProduct);\n  // Simulate saving to a database\n  // products.push(newProduct);\n\n  res.status(201).json(newProduct);\n});\n\nmodule.exports = router;\n"
+  },
+  {
+    "id": "5",
+    "prompt": "Write a SQL query to create a table named `customers` with columns: `customer_id` (PRIMARY KEY, INT, AUTO_INCREMENT), `first_name` (VARCHAR(50), NOT NULL), `last_name` (VARCHAR(50), NOT NULL), `email` (VARCHAR(100), UNIQUE).",
+    "completion": "CREATE TABLE customers (\n    customer_id INT AUTO_INCREMENT PRIMARY KEY,\n    first_name VARCHAR(50) NOT NULL,\n    last_name VARCHAR(50) NOT NULL,\n    email VARCHAR(100) UNIQUE\n);\n"
+  },
+  {
+    "id": "6",
+    "prompt": "Generate CSS for a responsive grid layout with 4 columns on desktop, 2 columns on tablet, and 1 column on mobile. Use CSS Grid for the layout and include basic styling for grid items.",
+    "completion": ".grid-container {\n    display: grid;\n    grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */\n    gap: 20px;\n    padding: 20px;\n    max-width: 1200px;\n    margin: 0 auto;\n}\n\n.grid-item {\n    background-color: #ffffff;\n    border: 1px solid #e0e0e0;\n    border-radius: 8px;\n    padding: 20px;\n    text-align: center;\n    box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n    transition: transform 0.2s ease-in-out;\n}\n\n.grid-item:hover {\n    transform: translateY(-5px);\n    box-shadow: 0 4px 8px rgba(0,0,0,0.15);\n}\n\n/* Tablet styles (e.g., screens up to 768px wide) */\n@media (max-width: 768px) {\n    .grid-container {\n        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */\n    }\n}\n\n/* Mobile styles (e.g., screens up to 480px wide) */\n@media (max-width: 480px) {\n    .grid-container {\n        grid-template-columns: 1fr; /* 1 column on mobile */\n    }\n}\n"
+  },
+  {
+    "id": "7",
+    "prompt": "Explain the concept of 'hoisting' in JavaScript with a simple code example demonstrating variable and function hoisting.",
+    "completion": "Hoisting is a JavaScript mechanism where variable and function declarations are moved to the top of their containing scope during the compilation phase, before code execution. This means you can use variables and functions before they are declared in the code.\n\nHowever, it's important to distinguish between declaration and initialization:\n- **Function declarations** are fully hoisted (both the name and the definition).\n- **`var` declarations** are hoisted, but only their declaration is hoisted, not their assignment. They are initialized with `undefined`.\n- **`let` and `const` declarations** are also hoisted, but they are not initialized. Accessing them before their declaration results in a `ReferenceError` (this is known as the 'Temporal Dead Zone').\n\n```javascript\n// --- Function Hoisting ---\nhoistedFunction(); // Output: \"I am hoisted!\"\n\nfunction hoistedFunction() {\n  console.log(\"I am hoisted!\");\n}\n\n// --- Variable Hoisting (with var) ---\nconsole.log(hoistedVar); // Output: undefined (declaration is hoisted, but not assignment)\nvar hoistedVar = \"I am a hoisted var\";\nconsole.log(hoistedVar); // Output: \"I am a hoisted var\"\n\n// --- Variable Hoisting (with let/const) ---\n// console.log(hoistedLet); // ReferenceError: Cannot access 'hoistedLet' before initialization\nlet hoistedLet = \"I am a hoisted let\";\n// console.log(hoistedConst); // ReferenceError: Cannot access 'hoistedConst' before initialization\nconst hoistedConst = \"I am a hoisted const\";\n```"
+  },
+  {
+    "id": "8",
+    "prompt": "Refactor the following Python code that filters a list of dictionaries to only include items where 'price' is greater than 50, into a more concise form using a list comprehension.",
+    "completion": "products = [\n    {'name': 'Laptop', 'price': 1200},\n    {'name': 'Mouse', 'price': 25},\n    {'name': 'Keyboard', 'price': 75},\n    {'name': 'Monitor', 'price': 300}\n]\n\n# Original (for loop)\n# expensive_products = []\n# for product in products:\n#     if product['price'] > 50:\n#         expensive_products.append(product)\n\n# Refactored (list comprehension)\nexpensive_products = [product for product in products if product['price'] > 50]\n\n# print(expensive_products)\n# Output: [{'name': 'Laptop', 'price': 1200}, {'name': 'Keyboard', 'price': 75}, {'name': 'Monitor', 'price': 300}]\n"
+  },
+  {
+    "id": "9",
+    "prompt": "Write a `package.json` file for a new Node.js project. It should have a `name`, `version`, `description`, `main` entry point (`src/app.js`), and `scripts` for `start` (running `node src/app.js`) and `dev` (using `nodemon src/app.js`). Include `express` and `dotenv` as dependencies.",
+    "completion": "{\n  \"name\": \"my-backend-api\",\n  \"version\": \"1.0.0\",\n  \"description\": \"A sample Node.js Express API.\",\n  \"main\": \"src/app.js\",\n  \"scripts\": {\n    \"start\": \"node src/app.js\",\n    \"dev\": \"nodemon src/app.js\",\n    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n  },\n  \"keywords\": [\n    \"node\",\n    \"express\",\n    \"api\"\n  ],\n  \"author\": \"Your Name\",\n  \"license\": \"MIT\",\n  \"dependencies\": {\n    \"dotenv\": \"^16.3.1\",\n    \"express\": \"^4.18.2\"\n  },\n  \"devDependencies\": {\n    \"nodemon\": \"^3.0.1\"\n  }\n}\n"
+  },
+  {
+    "id": "10",
+    "prompt": "Create a basic Dockerfile for a Python Flask application. The app runs on port 5000 and has a `requirements.txt` file. Use an Alpine-based Python image.",
+    "completion": "# Use an official Python runtime as a parent image\nFROM python:3.9-alpine\n\n# Set the working directory in the container\nWORKDIR /app\n\n# Copy the requirements file into the container at /app\nCOPY requirements.txt ./requirements.txt\n\n# Install any needed packages specified in requirements.txt\nRUN pip install --no-cache-dir -r requirements.txt\n\n# Copy the rest of the application code into the container at /app\nCOPY . .\n\n# Expose port 5000 for the Flask application\nEXPOSE 5000\n\n# Set the Flask application entry point\nENV FLASK_APP=app.py\n\n# Run the Flask application using Gunicorn for production or flask run for development\n# For production, a command like `gunicorn -w 4 -b 0.0.0.0:5000 app:app` would be preferred.\nCMD [\"flask\", \"run\", \"--host\", \"0.0.0.0\"]\n"
+  }
+]
+```
