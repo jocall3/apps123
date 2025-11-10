@@ -1,0 +1,42 @@
+```json
+{
+  "system_prompts": {
+    "role_and_goal": "You are 'AppForge AI', an expert software architect, developer, and project manager. Your primary goal is to interpret user requirements for an application and, through iterative design, planning, and code generation, build a complete, production-ready application. Prioritize best practices, modularity, and scalability. Always provide complete and correct code snippets or files.",
+    "initial_guidance": "You are tasked with guiding a user through the app development process. Start by understanding their core idea, then move to detailed feature specification, architecture design, and finally, code implementation. Be proactive in asking clarifying questions and suggesting solutions."
+  },
+  "app_definition_prompts": {
+    "initial_requirements": "I need to understand the core idea for your app. Please describe:\n1.  **App Name:** (e.g., 'TaskTracker', 'RecipeFinder')\n2.  **Primary Purpose:** What problem does it solve or what value does it provide?\n3.  **Target Audience:** Who will use this app?\n4.  **Key Features:** List 3-5 essential features (e.g., 'user authentication', 'data persistence', 'real-time chat').\n5.  **Monetization/Business Model (optional):** How might this app generate revenue or achieve its goals?",
+    "feature_details": "Let's dive deeper into the '{feature_name}' feature. Please elaborate on:\n1.  **Specific Functionality:** What exactly should it do?\n2.  **User Interaction:** How will users interact with this feature?\n3.  **Data Involved:** What data does it need to store or process?\n4.  **Dependencies:** Does it rely on other features or external services?",
+    "refine_requirements": "Based on our current understanding, the app '{app_name}' will have the following core features: {features_list}. Does this accurately reflect your vision? Are there any additions, removals, or modifications you'd like to make before we proceed?"
+  },
+  "architecture_design_prompts": {
+    "propose_architecture": "Based on the requirements for '{app_name}', I propose the following high-level architecture: {architecture_description}. This typically involves {components_list}. Do you have any feedback or specific preferences for this structure?",
+    "tech_stack_selection": "Considering the proposed architecture and features of '{app_name}', I recommend the following technology stack:\n-   **Frontend:** {frontend_tech} (e.g., React, Vue, Svelte)\n-   **Backend:** {backend_tech} (e.g., Node.js/Express, Python/Django/Flask, Go/Gin)\n-   **Database:** {database_tech} (e.g., PostgreSQL, MongoDB, Firebase)\n-   **Deployment/Hosting:** {deployment_tech} (e.g., AWS, Vercel, Heroku)\n\nWhat are your thoughts on this selection? Do you have any existing expertise or preferences for these technologies?",
+    "data_model_design": "Let's design the core data models for '{app_name}'. Based on the features, we likely need models for: {suggested_models}. For each model, what fields should it contain, and what are their types and relationships (e.g., 'User' has 'email:string', 'password:string', 'todos: [Todo]' relation)?",
+    "api_design": "Based on our data models and features, we'll need the following API endpoints: {suggested_endpoints}. For example, for the 'User' model, we might have `POST /api/users` (create), `GET /api/users/{id}` (read). Please confirm these or suggest modifications."
+  },
+  "project_planning_prompts": {
+    "breakdown_tasks": "To build '{app_name}' with {tech_stack}, I will break down the development into the following logical tasks and sub-tasks, following a standard software development lifecycle (e.g., setup, frontend, backend, database, deployment). I'll present these tasks sequentially for your approval and execution.",
+    "task_list_generation": "Generate a detailed task list for implementing the '{feature_name}' feature, considering the chosen tech stack ({tech_stack}). Each task should be actionable and clearly defined. Example: 'Create `src/components/{ComponentName}.vue`', 'Implement `GET /api/{resource}` endpoint'."
+  },
+  "code_generation_prompts": {
+    "generate_file_content": "You are tasked with generating the complete and correct code for the file at path: `{file_path}`. The purpose of this file is: `{file_purpose}`. The overall project context is: '{project_context}'. The chosen technology stack is: {tech_stack}. \n\nAdhere to best practices for {tech_stack}, ensure the code is functional, well-structured, and includes necessary imports/exports. Provide ONLY the code for the file, without any additional explanations or markdown fences.",
+    "generate_component_code": "Generate the complete code for a {component_type} component named '{component_name}'. It should fulfill the following requirements: '{component_requirements}'. Use the {framework} framework. The component should be placed in the context of file path `{file_path}`. Ensure all necessary imports, props, state, and methods are included. Provide ONLY the code.",
+    "generate_backend_code": "Generate the complete code for a {backend_component_type} (e.g., 'API route', 'controller', 'model') for the '{feature_name}' feature. It should implement the following functionality: '{functionality_description}'. Use the {backend_framework} framework. The code should be placed in the context of file path `{file_path}`. Adhere to best practices. Provide ONLY the code.",
+    "generate_config_file": "Generate the complete content for a configuration file at `{file_path}`. This file is for configuring '{config_purpose}' within a project using {tech_stack}. Include common and essential configurations. Provide ONLY the code."
+  },
+  "refinement_prompts": {
+    "review_and_improve": "Please review the following code snippet from `{file_path}` for correctness, potential bugs, efficiency, readability, and adherence to {tech_stack} best practices:\n```\n{code_snippet}\n```\nSuggest specific improvements and provide the corrected or enhanced code if necessary.",
+    "debug_and_fix": "The following code from `{file_path}` is experiencing an issue: '{issue_description}'. Here is the code:\n```\n{code_snippet}\n```\nIdentify the root cause of the bug and provide the corrected code, along with a brief explanation of the fix.",
+    "add_error_handling": "Add robust error handling to the following code snippet, considering potential failure points like API calls, invalid input, or database operations. Use {tech_stack} best practices for error management.\n```\n{code_snippet}\n```"
+  },
+  "testing_prompts": {
+    "generate_unit_test": "Generate a comprehensive unit test for the function/component: '{function_component_name}'. The function/component is described as: '{function_component_description}'. Use the {testing_framework} framework (e.g., Jest, Vitest, Pytest). Cover common scenarios, edge cases, and error conditions. The code under test is:\n```\n{code_snippet}\n```\nProvide ONLY the test code.",
+    "generate_e2e_test": "Generate an end-to-end test script for the '{feature_name}' feature, which covers the user flow: '{user_flow_description}'. Use {e2e_testing_framework} (e.g., Cypress, Playwright, Selenium). The test should verify {verification_points}. Provide ONLY the test code."
+  },
+  "documentation_prompts": {
+    "generate_readme": "Generate a detailed `README.md` file for an application named '{app_name}'. The app's purpose is: '{app_purpose}'. It includes the following key features: {key_features}. The technology stack is: {tech_stack}. Include sections for Project Title, Description, Features, Technology Stack, Installation, Usage, API Endpoints (if applicable), and Contributing. Focus on clarity and completeness.",
+    "generate_inline_comments": "Add clear, concise, and helpful inline comments to the following code snippet to explain complex logic, choices, or non-obvious parts. Do not comment on self-explanatory code.\n```\n{code_snippet}\n```\nProvide ONLY the commented code."
+  }
+}
+```
